@@ -26,7 +26,7 @@ You'll need to ensure you have a few things set up for this:
 
 
 ### How It's Different
-Web browsers have a dirty little secret: they're horribly inefficient when it comes to rendering changes. Traditional JavaScript frameworks and libraries apply changes from your code as soon as possible, and often don't batch these changes. This results in what's called "reflow", which ultimately can manifest itself in a number of ways - visible end-user lag, hanging pages, or stuttering animations, just to name a few. 
+Web browsers have a dirty little secret: they're horribly inefficient when it comes to rendering changes. Traditional JavaScript frameworks and libraries apply changes from your code as soon as possible, and often don't batch these changes. This results in what's called "reflow", which ultimately can manifest itself in a number of ways - visible end-user lag, hanging pages, or stuttering animations, just to name a few.
 
 #### The Virtual DOM
 React takes a different approach, utilizing what's known as a _Virtual DOM_. Internally, all your changes are compared to an in-memory representation of the current DOM, from which it determines what changes actually need to be applied. These changes are then batched and set as necessary, ensuring that you (and your users) get a smooth experience. A good example is a list of 100 items - if only one item out of the 100 has changed, your update pass will touch only that one. This optimizes page reflow in a way that's beneficial to browsers.
@@ -157,7 +157,7 @@ module.exports = {
             loader: 'babel',
             exclude: /node_modules/,
             include: PATHS.src,
-            
+
             // Note! This can also be done via a .babelrc file, but for
             // clarity purposes we've done it here. Either is fine!
             query: {
@@ -267,7 +267,7 @@ In React, components get event handling baked-in. While you attach them inline, 
 ES6 classes don't auto-bind, but this is easy to fix - we can bind our methods in the constructor, or make use of the newer ES6 arrow functions. Either will ensure that at call-time, our `this` value will be accurate. React's event system provides most of what you'll need - **[view the full list here](https://facebook.github.io/react/docs/events.html)**.
 
 ### Lifecycle Methods
-React provides various lifecycle methods on each component. These methods are essentially hooks for you to use; for example, `willComponentMount()` fires when a component is about to mount. `componentDidMount()` fires when a component has fully mounted and is ready. These lifecycle methods are a good place to do things like AJAX calls or to schedule animations or timers, keeping you in-sync with the inner workings of your application.
+React provides various lifecycle methods on each component. These methods are essentially hooks for you to use; for example, `componentWillMount()` fires when a component is about to mount. `componentDidMount()` fires when a component has fully mounted and is ready. These lifecycle methods are a good place to do things like AJAX calls or to schedule animations or timers, keeping you in-sync with the inner workings of your application.
 
 ``` javascript
 import React from 'react';
@@ -306,6 +306,6 @@ render(<Counter />, document.getElementById('app'));
 
 
 ## Wrapping Up
-So far we'ved looked at setting up and configuring Webpack and Babel. By now, you've got a functioning build system that can be extended as necessary! For a fun exercise, try enabling the **[Webpack Dev Server](https://webpack.github.io/docs/webpack-dev-server.html)** for automatic reloading as you make edits. Absolutely feel free to reach out with questions on it!
+So far we've looked at setting up and configuring Webpack and Babel. By now, you've got a functioning build system that can be extended as necessary! For a fun exercise, try enabling the **[Webpack Dev Server](https://webpack.github.io/docs/webpack-dev-server.html)** for automatic reloading as you make edits. Absolutely feel free to reach out with questions on it!
 
 We also examined how to construct React components using ES6 syntax, complete with basic event binding and lifecycle methods. In our next session we'll be digging into Flux, which enables you to easily manage state and associated data across your React application. Recommended reading would be the **[React Flux Overview](https://facebook.github.io/flux/docs/overview.html)**, as it provides a solid base on which to think about how your data will live inside your application.
